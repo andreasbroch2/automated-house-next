@@ -10,7 +10,7 @@ import Script from 'next/script'
 import ReactDomServer from 'react-dom/server'
 import Image from "next/image";
 import React from "react";
-const parse = require('html-react-parser');
+const parse = require('html-react-parser'); 
 
 
 export default function Index({ data, preview, menuItems, footerMenuItems, content}) {
