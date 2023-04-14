@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const menuItems = await getNavMenu('PRIMARY')
   const footerMenuItems = await getNavMenu('FOOTER')
   var cleanElement = data.content.replace(/\n/g, '');
-  cleanElement = cleanElement.replace(/href="https:\/\/dksmarthome\.ditsmartehjem\.dk/g, 'href="https://dksmarthome.dk');
+  cleanElement = cleanElement.replace(/href="https:\/\/myautomatedhouse\.ditsmartehjem\.dk/g, 'href="https://myautomatedhouse.com');
   var cleanJsx = parse(cleanElement);
   var imgNumber = 0;
   function reactNodeToImg(node) {
