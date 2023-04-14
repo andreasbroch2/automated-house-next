@@ -11,9 +11,12 @@ const PostGrid = ( {posts, sortBy = "views"} ) => {
     }
     if ( sortBy === 'date' ) {
         posts?.sort( ( a, b ) => {
-                const dateA = a?.node?.date;
-                const dateB = b?.node?.date;
-                return dateB - dateA;
+                const dateA = new Date( a?.node?.date);
+                const dateB = new Date(b?.node?.date);
+                // Convert to timestamo
+                const timestampA = dateA.getTime();
+                const timestampB = dateB.getTime();
+                return timestampB - timestampA;
         } );
     }
     // Only get 4 posts

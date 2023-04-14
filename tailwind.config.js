@@ -14,8 +14,8 @@ module.exports = {
         cyan: '#79FFE1',
         primary: "#5CB431",
         secondary: "#005697",
-        lightgreen: "#bbe3a6",
-        light: "#5CB43120"
+        lightblue: "#E3EBF1",
+        light: "#5CB43125"
       },
       spacing: {
         28: '7rem',

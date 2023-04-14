@@ -253,7 +253,7 @@ p a, .single-post a {
 }
 
 .alignfull .wp-block-cover__inner-container {
-  max-width: 960px;
+  max-width: 1280px;
   z-index: 10;
   width: 100%;
 
@@ -568,79 +568,6 @@ footer {
   }
 }
 
-.sorting-boxes {
-  @apply flex flex-wrap justify-center gap-4 md:gap-8 py-8;
-
-  .sorting-box {
-    @apply px-3 py-2 bg-white rounded-3xl border border-primary cursor-pointer text-primary;
-
-    &.current {
-      @apply bg-primary text-white;
-    }
-  }
-
-  input {
-    @apply hidden;
-  }
-}
-
-.flow-container {
-  @apply transition-all duration-1000;
-  .step {
-    @apply w-2/3 transition-all duration-1000;
-
-    &.step2 {
-      @apply place-self-center;
-    }
-
-    &.step3 {
-      @apply place-self-end;
-    }
-
-    &.active {
-      @apply scale-110;
-
-      .flow-box {
-        @apply !bg-primary text-white;
-      }
-
-      .flow-header {
-        @apply text-primary;
-      }
-    }
-
-    &.done {
-      .flow-box {
-        @apply bg-lightgreen;
-      }
-    }
-
-  }
-
-  .flow-box {
-    @apply flex items-center text-lg bg-light shadow-lg rounded-lg gap-4 md:gap-8 p-4 mb-4 place-content-between transition-all duration-1000;
-
-    svg {
-      @apply text-secondary max-h-12;
-    }
-
-    i {
-      @apply text-secondary text-[40px] leading-[40px];
-    }
-
-    p {
-      @apply w-full font-medium mb-0;
-    }
-  }
-
-  .flow-header {
-    @apply font-bold transition-all duration-1000;
-  }
-
-  .checkmark {
-    @apply invisible;
-  }
-}
 
 .all-blog-posts-container {
   .blog-box {

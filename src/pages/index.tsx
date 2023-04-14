@@ -11,26 +11,35 @@ import ReactDomServer from 'react-dom/server'
 import Image from "next/image";
 import React from "react";
 import PostGrid from '../components/postGrid'
-const parse = require('html-react-parser'); 
+import TextUSPBox from '../components/TextUSPBox'
+import TextAndBox from '../components/TextAndBox'
+const parse = require('html-react-parser');
 
 
-export default function Index({ data, preview, menuItems, footerMenuItems, content, allPosts}) {
-	const router = useRouter();
-	// If the page is not yet generated, this will be displayed
-	// initially until getStaticProps() finishes running
-	if ( router.isFallback ) {
-		return <div>Indlæser...</div>;
-	}
+export default function Index({ data, preview, menuItems, footerMenuItems, content, allPosts }) {
+  const router = useRouter();
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Indlæser...</div>;
+  }
   return (
     <Layout preview={preview} footerMenuItems={footerMenuItems} data={data}>
-    <Script src="https://kit.fontawesome.com/bf7aea6dc3.js" />
+      <Script src="https://kit.fontawesome.com/bf7aea6dc3.js" />
       <Head>
         <title>{data.seo.title}</title>
       </Head>
       <Container>
         <Header menuItems={menuItems} />
-        <div className='entry-content homepage' dangerouslySetInnerHTML={{__html: content}} />
-        <PostGrid posts={allPosts?.edges ?? []} />
+        <div className='entry-content homepage'>
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <TextAndBox />
+          <h2 className='mt-8'>Popular Posts</h2>
+          <PostGrid posts={allPosts?.edges ?? []} />
+          <TextUSPBox />
+          <h2 className='mt-8'>Recent Posts</h2>
+          <PostGrid posts={allPosts?.edges ?? []} sortBy='date'/>
+        </div>
       </Container>
     </Layout>
   )
@@ -46,19 +55,19 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   var imgNumber = 0;
   function reactNodeToImg(node) {
     return React.Children.map(node, (node) => {
-      if(node.type === 'a'){
+      if (node.type === 'a') {
       }
       if (!node.type) {
         return node;
       }
       if (node.type === 'img') {
-        if(imgNumber === 0){
+        if (imgNumber === 0) {
           imgNumber++;
-            return <Image src={node.props.src} alt={node.props.alt} width={1000} height={1000} priority placeholder="blur" blurDataURL={`/_next/image?url=${node.props.src}&w=16&q=1`}/>
+          return <Image src={node.props.src} alt={node.props.alt} width={1000} height={1000} priority placeholder="blur" blurDataURL={`/_next/image?url=${node.props.src}&w=16&q=1`} />
         }
-        else{
+        else {
           imgNumber++;
-          return <Image src={node.props.src} alt={node.props.alt} width={1000} height={1000} placeholder="blur" blurDataURL={`/_next/image?url=${node.props.src}&w=16&q=1`}/>
+          return <Image src={node.props.src} alt={node.props.alt} width={1000} height={1000} placeholder="blur" blurDataURL={`/_next/image?url=${node.props.src}&w=16&q=1`} />
         }
 
       }
@@ -92,7 +101,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   })
   const html = ReactDomServer.renderToStaticMarkup(<div>{dom}</div>)
   return {
-    props: { data, preview, menuItems, footerMenuItems, content: html, allPosts},
+    props: { data, preview, menuItems, footerMenuItems, content: html, allPosts },
     revalidate: 10,
   }
 }
