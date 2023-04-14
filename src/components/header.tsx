@@ -19,7 +19,7 @@ export default function Header({ menuItems }) {
       <header className="bg-white z-50 py-4 lg:flex lg:justify-between lg:items-center">
         <div className='flex justify-between items-center'>
           <Link href="/" className="hover:underline">
-            <Image src="/My-Automated-House-Logo-2.png" alt="DK Smarthome - Logo" width="160" height="64" ></Image>
+            <Image src="/My-Automated-House-Logo-2.png" alt="DK Smarthome - Logo" width="160" height="64" priority></Image>
           </Link>
           <div className="lg:hidden">
               <i className="fa-solid fa-bars text-2xl" onClick={toggleMenu}></i>
