@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Container from '../components/container'
 import Layout from '../components/layout'
-import { getSinglePage } from '../lib/api'
+import { getAllPostsForHome, getSinglePage } from '../lib/api'
 import Header from '../components/header'
 import { getNavMenu } from '../lib/api'
 import { useRouter } from 'next/router'
@@ -10,10 +10,11 @@ import Script from 'next/script'
 import ReactDomServer from 'react-dom/server'
 import Image from "next/image";
 import React from "react";
+import PostGrid from '../components/postGrid'
 const parse = require('html-react-parser'); 
 
 
-export default function Index({ data, preview, menuItems, footerMenuItems, content}) {
+export default function Index({ data, preview, menuItems, footerMenuItems, content, allPosts}) {
 	const router = useRouter();
 	// If the page is not yet generated, this will be displayed
 	// initially until getStaticProps() finishes running
@@ -29,12 +30,14 @@ export default function Index({ data, preview, menuItems, footerMenuItems, conte
       <Container>
         <Header menuItems={menuItems} />
         <div className='entry-content homepage' dangerouslySetInnerHTML={{__html: content}} />
+        <PostGrid posts={allPosts?.edges ?? []} />
       </Container>
     </Layout>
   )
 }
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const data = await getSinglePage("/");
+  const allPosts = await getAllPostsForHome(preview);
   const menuItems = await getNavMenu('PRIMARY')
   const footerMenuItems = await getNavMenu('FOOTER')
   var cleanElement = data.content.replace(/\n/g, '');
@@ -89,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   })
   const html = ReactDomServer.renderToStaticMarkup(<div>{dom}</div>)
   return {
-    props: { data, preview, menuItems, footerMenuItems, content: html},
+    props: { data, preview, menuItems, footerMenuItems, content: html, allPosts},
     revalidate: 10,
   }
 }

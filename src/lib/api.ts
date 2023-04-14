@@ -124,7 +124,7 @@ export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 1000, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             id
@@ -132,6 +132,8 @@ export async function getAllPostsForHome(preview) {
             excerpt
             slug
             date
+            modified
+            viewCount
             featuredImage {
               node {
                 sourceUrl
