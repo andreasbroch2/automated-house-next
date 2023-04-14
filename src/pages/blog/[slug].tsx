@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPostsWithSlug()
   return {
-    paths: allPosts.edges.map(({ node }) => `/artikler/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
     fallback: true,
   }
 }
