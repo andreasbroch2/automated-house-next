@@ -9,7 +9,7 @@ export default function TextAndBox() {
                 <div className="bg-secondary rounded-xl shadow-xl p-6 md:p-12 basis-1/2">
                     <h3>Ultimate Guide to Smart Homes: Make Your Home Smarter</h3>
                     <p>The main goal of a smart home is to improve the overall functionality of the home, making it more efficient, convenient and comfortable to live in. Read everything you need to know right here!</p>
-                    <div className="btn">Read More</div>
+                    <a href="/blog/the-ultimate-guide-to-smart-home-automation-how-to-make-your-home-smarter/" className="btn">Read More</a>
                 </div>
             </div>
         </section>
