@@ -27,7 +27,7 @@ export default function Seo({ seo, uri }) {
 				title={title}
 				description={opengraphDescription || metaDesc}
 				// String repalcement to remove .ditsmartehjem from canonical url
-				canonical={canonical.replace('.ditsmartehjem', '')}
+				canonical={opengraphUrl}
 				openGraph={{
 					type: 'website',
 					locale: 'en_US',
