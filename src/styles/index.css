@@ -436,7 +436,7 @@ footer {
     @apply mb-4;
   }
   img{
-    @apply my-4; 
+    @apply my-4;  
   }
 }
 ul.price-items-list {
