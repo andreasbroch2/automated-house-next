@@ -208,7 +208,7 @@ p a, .single-post a {
   color: unset;
     text-decoration: none;
 }
-} 
+}  
 .single-post {
   .entry-content {
     &>* {
