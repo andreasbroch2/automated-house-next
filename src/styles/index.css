@@ -5,6 +5,15 @@
     @apply font-primary;
     scroll-behavior: smooth;
     overflow-y: overlay;
+    pre{
+      white-space: inherit;
+    }
+    code{
+      background: #ffeff0;
+    padding: 0.1rem 0.3rem 0.2rem;
+    border-radius: 0.2rem;
+    display: block;
+    }
   }
   h1 {
     @apply text-4xl md:text-6xl leading-extra-tight;
